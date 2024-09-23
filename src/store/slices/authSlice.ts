@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-    getAuth, GoogleAuthProvider,
-    signInWithEmailAndPassword, signInWithPopup,
+    getAuth,
+    signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth';
 import firebase from "firebase/compat";
@@ -9,6 +9,7 @@ import {FirebaseError} from "@firebase/util";
 import {router} from "expo-router";
 
 import { AppThunk } from '../index';
+import {auth} from '../../config/firebaseConfig';
 
 interface AuthState {
     user: firebase.User | null;
@@ -17,7 +18,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-    user: null,
+    user: auth.currentUser,
     loading: false,
     error: null,
 };

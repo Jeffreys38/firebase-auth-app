@@ -38,21 +38,6 @@ export default function Layout() {
                 />
 
 
-                <Drawer.Screen
-                    name="import_user"
-                    options={{
-                        drawerLabel: 'Import User',
-                        title: 'Import',
-                        headerStyle: {
-                            backgroundColor: 'black',
-                        },
-                        headerTitleStyle: {
-                            color: 'white',
-                        },
-                        headerTintColor: 'white'
-                    }}
-                />
-
             </Drawer>
         </GestureHandlerRootView>
     );

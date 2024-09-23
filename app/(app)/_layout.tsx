@@ -36,6 +36,9 @@ export default function AppLayout() {
             <Stack.Screen name="get-started" options={{
                 headerShown: false
             }} />
+            <Stack.Screen name="(dashboard)/import_user" options={{
+                headerShown: false
+            }} />
         </Stack>
     );
 }

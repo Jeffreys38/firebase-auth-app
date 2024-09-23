@@ -13,13 +13,17 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "GoogleService-Info.plist",
+      "bundleIdentifier": "com.jeffrey0308.firebaseauthlab"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "googleServicesFile": "google-services.json",
+      "package": "com.jeffrey0308.firebaseauthlab"
     },
     "web": {
       "bundler": "metro",
@@ -28,6 +32,13 @@
     },
     "plugins": [
       "expo-router",
+      "@react-native-google-signin/google-signin",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.891108640906-q1lqic3j04ji975eqdje39t1fkgil2tc"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

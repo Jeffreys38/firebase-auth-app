@@ -16,6 +16,16 @@ import {handleError} from "../src/handler/error";
 import {AppDispatch, RootState} from "../src/store";
 import {login} from "../src/store/slices/authSlice";
 
+// Integrate Google Method
+// import {
+//   GoogleOneTapSignIn,
+//   statusCodes,
+//   type OneTapUser,
+// } from '@react-native-google-signin/google-signin';
+// GoogleOneTapSignIn.configure({
+//   webClientId: 'autoDetect',
+// });
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,8 +58,36 @@ const Login = () => {
     return false;
   }
 
-  function loginWithGoogle() {
-
+  async function loginWithGoogle() {
+    // try {
+    //   await GoogleSignin.hasPlayServices();
+    //   const response = await GoogleOneTapSignIn.signIn();
+    //
+    //   if (isSuccessResponse(response)) {
+    //     // read user's info
+    //     console.log(response.data);
+    //   } else if (isNoSavedCredentialFoundResponse(response)) {
+    //     // Android and Apple only.
+    //     // No saved credential found, call `createAccount`
+    //   }
+    // } catch (error) {
+    //   if (isErrorWithCode(error)) {
+    //     switch (error.code) {
+    //       case statusCodes.ONE_TAP_START_FAILED:
+    //         // Android-only, you probably have hit rate limiting.
+    //         // You can still call `presentExplicitSignIn` in this case.
+    //         break;
+    //       case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+    //         // Android: play services not available or outdated
+    //         // Web: when calling an unimplemented api (requestAuthorization)
+    //         break;
+    //       default:
+    //         // something else happened
+    //     }
+    //   } else {
+    //     // an error that's not related to google sign in occurred
+    //   }
+    // }
   }
 
   function loginWithGithub() {

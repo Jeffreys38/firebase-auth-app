@@ -2,6 +2,7 @@ import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import {router} from "expo-router";
 
 export default function () {
     return (
@@ -33,7 +34,7 @@ export default function () {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={() => { alert("10 đỉmmm") }}>
+            <TouchableOpacity style={styles.button} onPress={() => { router.push('/') }}>
                 <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
         </View>
