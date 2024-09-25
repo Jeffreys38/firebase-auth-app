@@ -46,6 +46,17 @@ export default function AppLayout() {
                         <Stack.Screen name="(dashboard)/import_user" options={{
                             headerShown: false
                         }} />
+                        <Stack.Screen name="detail/[id]" options={{
+                            title: "Detail User",
+                            headerShown: true,
+                            headerStyle: {
+                                backgroundColor: 'black',
+                            },
+                            headerTitleStyle: {
+                                color: 'white',
+                            },
+                            headerTintColor: 'white'
+                        }} />
                     </Stack>
                 </ModalProvider>
             </MessageProvider>

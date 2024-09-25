@@ -5,10 +5,11 @@ interface MessageToastProps {
     isShow: boolean;
     message: string;
     isError: boolean;
+    setShow: any;
 }
 
 
-export default function ({ isShow, message, isError }: MessageToastProps) {
+export default function ({ isShow, message, isError, setShow }: MessageToastProps) {
     const toast = useToast();
 
     useEffect(() => {
@@ -33,6 +34,10 @@ export default function ({ isShow, message, isError }: MessageToastProps) {
                     );
                 },
             });
+
+            setTimeout(() => {
+                setShow(false)
+            }, 3000);
         }
     }, [isShow]);
 };

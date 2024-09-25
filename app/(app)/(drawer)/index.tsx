@@ -4,14 +4,16 @@ import { useModalContext } from "@/src/context/ModalContext";
 import { useMessageContext } from "@/src/context/MessageContext";
 import ModalForm from '../../../src/components/ModalForm';
 import MessageToast from "@/src/components/MessageToast";
+import Table from '@/src/components/Table';
 
 export default function () {
     const { isShowModalOpen, setShowModalOpen } = useModalContext();
-    const { isShowMessageOpen, message, isError } = useMessageContext();
+    const { isShowMessageOpen, message, isError, setShowMessageOpen } = useMessageContext();
 
     return (
         <>
-            <MessageToast isShow={isShowMessageOpen} message={message} isError={isError}/>
+            <Table></Table>
+            <MessageToast setShow={setShowMessageOpen} isShow={isShowMessageOpen} message={message} isError={isError}/>
             {/* Add */}
             <ModalForm showAlertDialog={isShowModalOpen} handleClose={setShowModalOpen} ></ModalForm>
         </>

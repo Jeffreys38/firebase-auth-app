@@ -86,10 +86,14 @@ export default function UserDialog({ showAlertDialog, handleClose }) {
 
         try {
             const id = await databaseHelper.add({ name, age, email });
-            dispatch(addUser({ name, age, email }));
+            dispatch(addUser({ id, name, age, email }));
             setShowModalOpen(false);
             setMessage("Add user successfully", false);
             setShowMessageOpen(true);
+
+            setName("");
+            setEmail("");
+            setAge(1);
         } catch (error) {
             setMessage("An error occurred: " + error.name, true);
             setShowMessageOpen(true);

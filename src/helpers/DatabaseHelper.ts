@@ -52,6 +52,7 @@ class DatabaseHelper<T extends DocumentData> implements IDatabaseMethods<T> {
         try {
             const querySnapshot = await getDocs(this._reference);
             const documents: T[] = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
                 ...doc.data(),
             })) as T[];
 
@@ -89,7 +90,10 @@ class DatabaseHelper<T extends DocumentData> implements IDatabaseMethods<T> {
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                return docSnap.data() as T;
+                return {
+                    id: docSnap.id,
+                    ...docSnap.data()
+                } as T;
             } else {
                 return null;
             }
