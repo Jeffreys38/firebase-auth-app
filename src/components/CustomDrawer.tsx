@@ -15,6 +15,7 @@ import {AppDispatch, RootState} from "../store";
 import {logout} from "../store/slices/authSlice";
 
 const CustomDrawer = (props: any) => {
+    const maxEmail = 25;
     const dispatch: AppDispatch = useDispatch();
     const { loading, error, user } = useSelector((state: RootState) => state.auth);
 
@@ -24,7 +25,7 @@ const CustomDrawer = (props: any) => {
             let removeDomain = user.email.slice(0, indexDomain);
             let removedString = user.email.slice(indexDomain, user.email.length);
 
-            return removeDomain.length > 10  ? removeDomain.slice(0, 10) + removedString : removeDomain + removedString
+            return removeDomain.length > maxEmail ? removeDomain.slice(0, maxEmail) + removedString : removeDomain + removedString
         }
     };
 
@@ -46,6 +47,11 @@ const CustomDrawer = (props: any) => {
             <View style={styles.wrapInfo}>
                 <Text style={[styles.wrapUserName, {fontWeight: 'regular'}]}>Hi, </Text>
                 <Text style={styles.wrapUserName}>{filterEmail()}</Text>
+            </View>
+
+            <View style={styles.wrapInfo}>
+                <Text style={[styles.wrapUserName, {fontWeight: 'regular'}]}>Role: </Text>
+                <Text style={styles.wrapUserName}>{user?.role}</Text>
             </View>
 
 

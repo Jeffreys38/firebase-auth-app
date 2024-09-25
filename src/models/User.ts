@@ -1,8 +1,8 @@
 type UserModel = {
-    id: string,
+    id?: string,
     name: string,
     email: string,
-    age: string
+    age: number
 }
 
 export default UserModel;

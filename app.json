@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "firebase",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -18,12 +18,29 @@
       "bundleIdentifier": "com.jeffrey0308.firebaseauthlab"
     },
     "android": {
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "app.firebase.io",
+              "pathPrefix": "/app"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "googleServicesFile": "google-services.json",
-      "package": "com.jeffrey0308.firebaseauthlab"
+      "package": "com.jeffrey0308.firebaseauthlab",
+      "associatedDomains": [
+        "applinks:firebaseauthlab"
+      ]
     },
     "web": {
       "bundler": "metro",

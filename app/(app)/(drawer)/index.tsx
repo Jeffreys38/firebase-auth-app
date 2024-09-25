@@ -1,10 +1,20 @@
-import {Text, StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+
+import { useModalContext } from "@/src/context/ModalContext";
+import { useMessageContext } from "@/src/context/MessageContext";
+import ModalForm from '../../../src/components/ModalForm';
+import MessageToast from "@/src/components/MessageToast";
 
 export default function () {
+    const { isShowModalOpen, setShowModalOpen } = useModalContext();
+    const { isShowMessageOpen, message, isError } = useMessageContext();
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>10 score</Text>
-        </View>
+        <>
+            <MessageToast isShow={isShowMessageOpen} message={message} isError={isError}/>
+            {/* Add */}
+            <ModalForm showAlertDialog={isShowModalOpen} handleClose={setShowModalOpen} ></ModalForm>
+        </>
     )
 }
 

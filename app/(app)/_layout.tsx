@@ -2,6 +2,10 @@ import {Text} from 'react-native';
 import {Redirect, router, Stack, useNavigation} from 'expo-router';
 import {AppDispatch, RootState} from "../../src/store";
 import {useDispatch, useSelector} from "react-redux";
+import { Provider } from 'react-redux';
+import { store } from '../../src/store';
+import {ModalProvider} from "../../src/context/ModalContext";
+import {MessageProvider} from "@/src/context/MessageContext";
 
 export default function AppLayout() {
     const { loading, error, user } = useSelector((state: RootState) => state.auth);
@@ -22,23 +26,29 @@ export default function AppLayout() {
     // need to be able to access the (auth) group and sign in again.
     // This layout can be deferred because it's not the root layout.
     return (
-        <Stack initialRouteName={"get-started"}>
-            <Stack.Screen name="(drawer)" options={{
-                title: "Customer Management",
-                headerStyle: {
-                    backgroundColor: 'black',
-                },
-                headerTitleStyle: {
-                    color: 'white',
-                },
-                headerShown: false
-            }} />
-            <Stack.Screen name="get-started" options={{
-                headerShown: false
-            }} />
-            <Stack.Screen name="(dashboard)/import_user" options={{
-                headerShown: false
-            }} />
-        </Stack>
+        <Provider store={store}>
+            <MessageProvider>
+                <ModalProvider>
+                    <Stack>
+                        <Stack.Screen name="(drawer)" options={{
+                            title: "Customer Management",
+                            headerStyle: {
+                                backgroundColor: 'black',
+                            },
+                            headerTitleStyle: {
+                                color: 'white',
+                            },
+                            headerShown: false
+                        }} />
+                        <Stack.Screen name="get-started" options={{
+                            headerShown: false
+                        }} />
+                        <Stack.Screen name="(dashboard)/import_user" options={{
+                            headerShown: false
+                        }} />
+                    </Stack>
+                </ModalProvider>
+            </MessageProvider>
+        </Provider>
     );
 }
